@@ -27,8 +27,10 @@ const HeroSection = () => {
     setBackground(bg);
   }, [data]);
 
+  const isLightMode = useSelector((state) => state.lightMode.value);
+
   return (
-    <div className="heroBanner">
+    <div className={!isLightMode ? "heroBanner" : "heroBannerDark"}>
       {!loading && (
         <div className="backdrop-img">
           <LazyLoadImg src={background} />

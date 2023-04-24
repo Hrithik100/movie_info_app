@@ -16,6 +16,10 @@
   --black-lighter: #1c4b91;
   --black-light: #173d77;
   --pink: #da2f62;
+  --gray: #ebfbff;
+  --gray1: #7199a2;
+  --gray2: #53737a;
+  --gray-dark: #2a3233;
   --orange: #f89e00;
   --gradient: linear-gradient(98.37deg, #b85b7c 0.99%, #e72341 100%);
 }
@@ -28,6 +32,10 @@
 
 body {
   background-color: var(--black);
+}
+
+body.light{
+  background-color: var(--gray);
 }
 
 ::-webkit-scrollbar {

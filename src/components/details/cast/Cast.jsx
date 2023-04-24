@@ -7,6 +7,7 @@ import avatar from "../../../assets/avatar.png"
 
 const Cast = ({ data, loading }) => {
   const { url } = useSelector((state) => state.home);
+  const isLightMode = useSelector((state) => state.lightMode.value);
 
   const skeleton = () => {
     return (
@@ -19,7 +20,7 @@ const Cast = ({ data, loading }) => {
   };
 
   return (
-    <div className="castSection">
+    <div className={!isLightMode ? "castSection" : "castSectionLight"}>
       <ContentWrapper>
         <div className="sectionHeading">Top Cast</div>
         {!loading ? (

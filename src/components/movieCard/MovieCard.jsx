@@ -12,9 +12,11 @@ const MovieCard = ({ data, fromSearch, mediaType }) => {
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
   const posterUrl = data.poster_path ? url.poster + data.poster_path : noPoster;
+
+  const isLightMode = useSelector((state) => state.lightMode.value);
   return (
     <div
-      className="movieCard"
+      className={!isLightMode ? "movieCard" : "movieCardLight"}
       onClick={() => navigate(`/${data.media_type || mediaType}/${data.id}`)}
     >
       <div className="posterBlock">

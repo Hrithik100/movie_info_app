@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./style.scss"
 import ContentWrapper from './../../components/contentWrapper/ContentWrapper';
+import { useSelector } from 'react-redux';
 
 const PageNotFound = () => {
+
+  const isLightMode = useSelector((state) => state.lightMode.value);
+
+  useEffect(() => {
+    if (isLightMode) {
+      document.body.classList.add('light');
+    } else {
+      document.body.classList.remove('light');
+    }
+  }, [isLightMode]); 
   return (
     <div className="pageNotFound">
             <ContentWrapper>

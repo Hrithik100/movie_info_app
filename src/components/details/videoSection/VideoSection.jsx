@@ -4,10 +4,12 @@ import ContentWrapper from "../../contentWrapper/ContentWrapper";
 import LazyLoadImg from "../../lazyLoadImage/LazyLoadImg";
 import { Playbtn } from "../playbtn/Playbtn";
 import VideoPopup from "../../videoPopup/VideoPopup";
+import { useSelector } from "react-redux";
 
 const VideoSection = ({ data, loading }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
+  const isLightMode = useSelector((state) => state.lightMode.value);
 
   const loadingSkeleton = () => {
     return (
@@ -20,7 +22,7 @@ const VideoSection = ({ data, loading }) => {
   };
 
   return (
-    <div className="videosSection">
+    <div className={!isLightMode ? "videosSection" : "videosSectionLight"}>
       <ContentWrapper>
         <div className="sectionHeading">Official Videos</div>
         {!loading ? (

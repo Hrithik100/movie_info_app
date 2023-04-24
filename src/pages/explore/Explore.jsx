@@ -8,6 +8,7 @@ import { fetchDataFromApi } from "../../utils/Api";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
 import Spinner from "../../components/spinner/Spinner";
+import { useSelector } from "react-redux";
 
 let filters = {};
 
@@ -94,8 +95,18 @@ const Explore = () => {
         fetchInitialData();
     };
 
+    const isLightMode = useSelector((state) => state.lightMode.value);
+
+    useEffect(() => {
+      if (isLightMode) {
+        document.body.classList.add('light');
+      } else {
+        document.body.classList.remove('light');
+      }
+    }, [isLightMode]); 
+
     return (
-        <div className="explorePage">
+        <div className={!isLightMode ? "explorePage" : "explorePageLight"}>
             <ContentWrapper>
                 <div className="pageHeader">
                     <div className="pageTitle">

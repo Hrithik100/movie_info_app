@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./style.scss"
+import { useSelector } from 'react-redux'
 
 const Tabs = ({data, onTabChange}) => {
 
@@ -14,8 +15,10 @@ const Tabs = ({data, onTabChange}) => {
         onTabChange(tab, index)
     }
 
+    const isLightMode = useSelector((state) => state.lightMode.value);
+
   return (
-    <div className='switchingTabs'>
+    <div className={!isLightMode ? 'switchingTabs' : 'switchingTabsLight'}>
         <div className='tabItems'>
             {data.map((tab,index)=>(
                 <span key={index} className={`tabItem ${selectedTab === index ? "active" : ""}`}

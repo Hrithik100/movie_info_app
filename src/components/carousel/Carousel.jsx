@@ -42,8 +42,10 @@ const Carousel = ({data, loading,endpoint, title}) => {
         )
     }
 
+    const isLightMode = useSelector((state) => state.lightMode.value);
+
   return (
-    <div className="carousel">
+    <div className={!isLightMode ? "carousel" : "carouselLight"}>
         <ContentWrapper>
             {title && <div className="carouselTitle">{title}</div>}
             <BsFillArrowLeftCircleFill className="carouselLeftNav arrow" onClick={() => navigation("left")}/>

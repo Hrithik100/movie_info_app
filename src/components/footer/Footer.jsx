@@ -7,10 +7,13 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+
+  const isLightMode = useSelector((state) => state.lightMode.value);
   return (
-    <footer className="footer">
+    <footer className={!isLightMode ? "footer" : "footerLight"}>
       <ContentWrapper>
         <ul className="menuItems">
           <li className="menuItem">Terms Of Use</li>

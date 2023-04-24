@@ -4,6 +4,7 @@ import "./style.scss"
 import Tabs from "../tabs/Tabs";
 import useFetch from "../../hooks/useFetch";
 import Carousel from "../carousel/Carousel";
+import { useSelector } from "react-redux";
 
 const Popular = () => {
 
@@ -14,8 +15,10 @@ const Popular = () => {
         setEndpoint(tab === "Movies" ? "movie" : "tv")
     }
 
+    const isLightMode = useSelector((state) => state.lightMode.value);
+
   return (
-    <div className="carouselSection">
+    <div className={!isLightMode ? "carouselSection" : "carouselSectionLight"}>
       <ContentWrapper>
         <span className="carouselTitle">What's Popular</span>
         <Tabs data={["Movies", "TV Shows"]} onTabChange={onTabChange}/>

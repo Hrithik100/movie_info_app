@@ -33,9 +33,10 @@ const DetailsBanner = ({ video, crew }) => {
     const minutes = totalMinutes % 60;
     return `${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
   };
+  const isLightMode = useSelector((state) => state.lightMode.value);
 
   return (
-    <div className="detailsBanner">
+    <div className={!isLightMode ? "detailsBanner" :"detailsBannerLight"}>
       {!loading ? (
         <>
           {!!data && (
