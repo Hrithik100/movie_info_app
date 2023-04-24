@@ -20,6 +20,10 @@ const HeroSection = () => {
     }
   };
 
+  const searchBtnHandler =() =>{
+    navigate(`/search/${query}`)
+  }
+
   useEffect(() => {
     const bg =
       url.backdrop +
@@ -30,7 +34,7 @@ const HeroSection = () => {
   const isLightMode = useSelector((state) => state.lightMode.value);
 
   return (
-    <div className={!isLightMode ? "heroBanner" : "heroBannerDark"}>
+    <div className={!isLightMode ? "heroBanner" : "heroBannerLight"}>
       {!loading && (
         <div className="backdrop-img">
           <LazyLoadImg src={background} />
@@ -50,7 +54,7 @@ const HeroSection = () => {
                 type="text"
                 placeholder="Search for a movie or tv show"
               />
-              <button>Search</button>
+              <button onClick={searchBtnHandler}>Search</button>
             </div>
           </div>
       </ContentWrapper>
